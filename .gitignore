@@ -190,3 +190,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/android,windows,androidstudio
+.idea/
