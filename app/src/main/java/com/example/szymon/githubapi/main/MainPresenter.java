@@ -5,4 +5,11 @@ package com.example.szymon.githubapi.main;
  */
 
 public interface MainPresenter {
+    void onStart(final MainView mainView);
+
+    void onStop();
+
+    void getReposOfUser(String user);
+
+    void buttonClicked();
 }

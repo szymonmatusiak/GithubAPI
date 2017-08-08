@@ -7,5 +7,7 @@ import com.example.szymon.githubapi.base.IBaseView;
  */
 
 public interface MainView extends IBaseView {
+    void toast(final String text);
 
+    void setTextView(String text);
 }
