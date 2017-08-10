@@ -15,7 +15,8 @@
             android:id="@+id/username_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:hint="szymonmatusiak"/>
 
         <Button
             android:id="@+id/button"

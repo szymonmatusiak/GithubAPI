@@ -12,6 +12,7 @@ import com.example.szymon.githubapi.githubAPI.Repo;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Szymon on 10.08.2017.
@@ -50,7 +51,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         return repositories.size();
     }
 
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.name)
         TextView name;
@@ -61,11 +61,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            name = (TextView) itemView.findViewById(R.id.name);
-            fullName = (TextView) itemView.findViewById(R.id.full_name);
-            defaultBranch = (TextView) itemView.findViewById(R.id.default_branch);
+            ButterKnife.bind(this, itemView);
         }
     }
-
-
 }

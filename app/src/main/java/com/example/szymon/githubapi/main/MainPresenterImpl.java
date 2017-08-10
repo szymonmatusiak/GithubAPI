@@ -46,7 +46,6 @@ public class MainPresenterImpl extends BasePresenter<MainView> implements MainPr
             public void onResponse(Call<List<Repo>> call, Response<List<Repo>> response) {
                 int statusCode = response.code();
                 if (statusCode == 200) {
-                    getView().toast(String.valueOf(response.code()));
                     repositories = response.body();
                     getView().populateRecyclerView(repositories);
                 }

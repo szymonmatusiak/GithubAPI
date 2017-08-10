@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
     RecyclerView recyclerView;
 
     private MyRecyclerViewAdapter recyclerViewAdapter;
-
     private MainPresenter mainPresenter;
     private List<Repo> repos = new ArrayList<>();
 
@@ -38,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         ButterKnife.bind(this);
 
         mainPresenter = new MainPresenterImpl();
@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @OnClick(R.id.button)
     void onButtonClicked() {
-        // toast("button");
-        //recyclerViewAdapter = new MyRecyclerViewAdapter();
+        repos.clear();
+        recyclerViewAdapter.notifyDataSetChanged();
         mainPresenter.getReposOfUser(String.valueOf(username.getText()));
     }
 
@@ -66,12 +66,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void populateRecyclerView(List<Repo> repos) {
-
-            this.repos.addAll(repos);
-            recyclerViewAdapter.notifyDataSetChanged();
-            toast(this.repos.get(0).getFullName());
-
+        this.repos.addAll(repos);
+        recyclerViewAdapter.notifyDataSetChanged();
     }
-
-
 }
