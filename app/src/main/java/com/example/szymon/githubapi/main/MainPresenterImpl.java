@@ -4,7 +4,6 @@ import com.example.szymon.githubapi.base.BasePresenter;
 import com.example.szymon.githubapi.githubAPI.GitHubService;
 import com.example.szymon.githubapi.githubAPI.Repo;
 
-import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -22,6 +21,7 @@ public class MainPresenterImpl extends BasePresenter<MainView> implements MainPr
     private static final String URL = "https://api.github.com/";
     private Retrofit retrofit;
     private GitHubService gitHubService;
+    private List<Repo> repositories;
 
     @Override
     public void onStart(MainView mainView) {
@@ -45,19 +45,17 @@ public class MainPresenterImpl extends BasePresenter<MainView> implements MainPr
             @Override
             public void onResponse(Call<List<Repo>> call, Response<List<Repo>> response) {
                 int statusCode = response.code();
-                List<Repo> repositories= response.body();
-                getView().setTextView(repositories.get(0).getFullName());
+                if (statusCode == 200) {
+                    getView().toast(String.valueOf(response.code()));
+                    repositories = response.body();
+                    getView().populateRecyclerView(repositories);
+                }
             }
 
             @Override
             public void onFailure(Call<List<Repo>> call, Throwable t) {
-                getView().setTextView("onFailure");
+                getView().toast(t.toString());
             }
         });
-    }
-
-    @Override
-    public void buttonClicked() {
-        getReposOfUser("szymonmatusiak");
     }
 }

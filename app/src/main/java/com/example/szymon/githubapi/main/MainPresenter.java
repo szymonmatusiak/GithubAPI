@@ -11,5 +11,4 @@ public interface MainPresenter {
 
     void getReposOfUser(String user);
 
-    void buttonClicked();
 }
