@@ -24,7 +24,7 @@ public class MainPresenterImpl extends BasePresenter<MainView> implements MainPr
     private List<Repo> repositories;
 
     @Override
-    public void onStart(MainView mainView) {
+    public void onStart(final MainView mainView) {
         attachView(mainView);
         retrofit = new Retrofit.Builder()
                 .baseUrl(URL)
@@ -39,7 +39,7 @@ public class MainPresenterImpl extends BasePresenter<MainView> implements MainPr
     }
 
     @Override
-    public void getReposOfUser(String user) {
+    public void getReposOfUser(final String user) {
         Call<List<Repo>> repos = gitHubService.listRepos(user);
         repos.enqueue(new Callback<List<Repo>>() {
             @Override

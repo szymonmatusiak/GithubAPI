@@ -60,12 +60,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     @Override
-    public void toast(String text) {
+    public void toast(final String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void populateRecyclerView(List<Repo> repos) {
+    public void populateRecyclerView(final List<Repo> repos) {
         this.repos.addAll(repos);
         recyclerViewAdapter.notifyDataSetChanged();
     }
