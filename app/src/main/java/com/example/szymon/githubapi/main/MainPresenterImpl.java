@@ -35,7 +35,7 @@ public class MainPresenterImpl extends BasePresenter<MainView> implements MainPr
 
     @Override
     public void onStop() {
-
+        detachView(true);
     }
 
     @Override

@@ -4,34 +4,23 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.szymon.githubapi.R;
 import com.example.szymon.githubapi.githubAPI.Repo;
 import com.example.szymon.githubapi.recycleView.MyRecyclerViewAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements MainView {
-    @BindView(R.id.username_input)
-    EditText username;
-
-    @BindView(R.id.button)
-    Button button;
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
 
     private MyRecyclerViewAdapter recyclerViewAdapter;
-    private MainPresenter mainPresenter;
-    private List<Repo> repos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +28,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-
+        if (savedInstanceState != null) {
+            getFragmentManager().beginTransaction().replace(R.id.container, SearchFragment.newInstantiate()).commit();
+        }
         mainPresenter = new MainPresenterImpl();
         recyclerViewAdapter = new MyRecyclerViewAdapter(repos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -52,12 +43,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
         mainPresenter.onStart(this);
     }
 
-    @OnClick(R.id.button)
-    void onButtonClicked() {
-        repos.clear();
-        recyclerViewAdapter.notifyDataSetChanged();
-        mainPresenter.getReposOfUser(String.valueOf(username.getText()));
-    }
 
     @Override
     public void toast(final String text) {
