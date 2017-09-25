@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Szymon on 04.08.2017.
  */
 
-public class MainPresenterImpl extends BasePresenter<MainView> implements MainPresenter {
+public class MainPresenterImpl extends BasePresenter<MyRecyclerView> implements MainPresenter {//MainView
 
     private static final String URL = "https://api.github.com/";
     private Retrofit retrofit;
@@ -24,8 +24,8 @@ public class MainPresenterImpl extends BasePresenter<MainView> implements MainPr
     private List<Repo> repositories;
 
     @Override
-    public void onStart(final MainView mainView) {
-        attachView(mainView);
+    public void onStart(final MyRecyclerView MyRecyclerView) {
+        attachView(MyRecyclerView);
         retrofit = new Retrofit.Builder()
                 .baseUrl(URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -53,7 +53,6 @@ public class MainPresenterImpl extends BasePresenter<MainView> implements MainPr
 
             @Override
             public void onFailure(Call<List<Repo>> call, Throwable t) {
-                getView().toast(t.toString());
             }
         });
     }

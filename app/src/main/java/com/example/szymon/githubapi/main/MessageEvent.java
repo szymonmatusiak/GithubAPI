@@ -5,4 +5,9 @@ package com.example.szymon.githubapi.main;
  */
 
 class MessageEvent {
+    String message;
+
+    public MessageEvent(String message) {
+        this.message = message;
+    }
 }
