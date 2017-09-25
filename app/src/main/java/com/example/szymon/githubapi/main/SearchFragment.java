@@ -18,18 +18,18 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SearchFragment extends Fragment {
+public class SearchFragment2 extends Fragment {
     @BindView(R.id.username_input)
     EditText username;
     @BindView(R.id.button)
     Button button;
 
-    public SearchFragment() {
+    public SearchFragment2() {
         // Required empty public constructor
     }
 
-    public static SearchFragment newInstantiate() {
-        SearchFragment searchFragment = new SearchFragment();
+    public static SearchFragment2 newInstantiate() {
+        SearchFragment2 searchFragment = new SearchFragment2();
         searchFragment.setRetainInstance(true);
         return searchFragment;
     }
@@ -45,8 +45,8 @@ public class SearchFragment extends Fragment {
     @OnClick(R.id.button)
     void onButtonClicked() {
         getActivity().findViewById(R.id.container);
-        repos.clear();
-        recyclerViewAdapter.notifyDataSetChanged();
-        mainPresenter.getReposOfUser(String.valueOf(username.getText()));
+//        repos.clear();
+//        recyclerViewAdapter.notifyDataSetChanged();
+//        mainPresenter.getReposOfUser(String.valueOf(username.getText()));
     }
 }
