@@ -7,5 +7,4 @@ import com.example.szymon.githubapi.base.IBaseView;
  */
 
 public interface MainView extends IBaseView {
-
 }
