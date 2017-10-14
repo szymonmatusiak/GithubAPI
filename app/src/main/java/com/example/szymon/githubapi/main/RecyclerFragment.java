@@ -76,6 +76,7 @@ public class RecyclerFragment extends Fragment implements MyRecyclerView {
     @Override
     public void populateRecyclerView(MessageEvent messageEvent) {
         mainPresenter.getReposOfUser(messageEvent.message);
+        mainPresenter.getAccessToken();
     }
 
     @Override

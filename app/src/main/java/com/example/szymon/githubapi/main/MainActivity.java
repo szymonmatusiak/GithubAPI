@@ -19,7 +19,16 @@ public class MainActivity extends AppCompatActivity implements MainView {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, SearchFragment.newInstantiate()).commit();
             getSupportFragmentManager().beginTransaction().replace(R.id.recycler_fragment_container, RecyclerFragment.newInstantiate()).commit();
         }
+        //Intent intent = new Intent(this, Main2Activity.class);
+
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
 
     public void toast(final String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();

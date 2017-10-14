@@ -17,7 +17,21 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="callback"
+                    android:scheme="githubapi" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name=".main2.Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

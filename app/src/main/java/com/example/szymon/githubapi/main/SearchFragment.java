@@ -1,7 +1,10 @@
 package com.example.szymon.githubapi.main;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,14 +29,44 @@ public class SearchFragment extends Fragment {
     EditText username;
     @BindView(R.id.button)
     Button button;
+    String clientID = "aae5a6cfcddfa592556b";
+    String clientSecret = "9dc99a3b71c42e607852f6557ec48f5c8820f910";
+    String redirectUri = "githubapi://callback";
+    MainPresenterForActivity mainPresenter = null;
+    static int test = 0;
 
     public SearchFragment() {
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (test == 0) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/login/oauth/authorize" + "?client_id=" + clientID + "&scope=repo&redirect_uri=" + redirectUri));
+            startActivity(intent);
+            test++;
+        }
     }
 
     public static SearchFragment newInstantiate() {
         SearchFragment searchFragment = new SearchFragment();
         searchFragment.setRetainInstance(true);
         return searchFragment;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Uri uri = getActivity().getIntent().getData();
+        if (uri != null && uri.toString().startsWith(redirectUri)) {
+            String code = uri.getQueryParameter("code");
+            Toast.makeText(getActivity(), uri.toString(), Toast.LENGTH_LONG).show();
+            mainPresenter.setCode(code);
+        } else {
+            Toast.makeText(getActivity(), "fuck", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     @Override
@@ -47,6 +80,8 @@ public class SearchFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        mainPresenter = new MainPresenterImpl();
+
     }
 
     @Override

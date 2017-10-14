@@ -10,4 +10,6 @@ public interface MainPresenter {
     void onStop();
 
     void getReposOfUser(String user);
+
+    void getAccessToken();
 }

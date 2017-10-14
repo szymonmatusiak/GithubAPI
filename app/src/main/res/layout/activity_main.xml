@@ -7,14 +7,16 @@
     android:orientation="vertical"
     tools:context="com.example.szymon.githubapi.main.MainActivity">
 
-    <fragment android:name="com.example.szymon.githubapi.main.SearchFragment"
+    <fragment
         android:id="@+id/fragment_container"
+        android:name="com.example.szymon.githubapi.main.SearchFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout="@layout/fragment_search" />
 
-    <fragment android:name="com.example.szymon.githubapi.main.RecyclerFragment"
+    <fragment
         android:id="@+id/recycler_fragment_container"
+        android:name="com.example.szymon.githubapi.main.RecyclerFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/fragment_recycler" />
