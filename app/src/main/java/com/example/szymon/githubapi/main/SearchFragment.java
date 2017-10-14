@@ -43,7 +43,7 @@ public class SearchFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (test == 0) {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/login/oauth/authorize" + "?client_id=" + clientID + "&scope=repo&redirect_uri=" + redirectUri));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/login/oauth/authorize" + "?client_id=" + clientID + "&redirect_uri=" + redirectUri));
             startActivity(intent);
             test++;
         }
@@ -64,7 +64,7 @@ public class SearchFragment extends Fragment {
             Toast.makeText(getActivity(), uri.toString(), Toast.LENGTH_LONG).show();
             mainPresenter.setCode(code);
         } else {
-            Toast.makeText(getActivity(), "fuck", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "onResumeFAIL", Toast.LENGTH_LONG).show();
         }
 
     }

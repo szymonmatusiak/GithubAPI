@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
             getSupportFragmentManager().beginTransaction().replace(R.id.recycler_fragment_container, RecyclerFragment.newInstantiate()).commit();
         }
         //Intent intent = new Intent(this, Main2Activity.class);
-
     }
 
     @Override
@@ -29,9 +28,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     }
 
-
     public void toast(final String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
-
 }

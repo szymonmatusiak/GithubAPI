@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainPresenterImpl extends BasePresenter<MyRecyclerView> implements MainPresenter, MainPresenterForActivity {//MainView
 
-    private static final String URL = "https://github.com/";
+    private static final String URL = "https://api.github.com/";//bez api przestaje dzialac pobieranie listy repozytorium
     private static final String clientID = "aae5a6cfcddfa592556b";
     private static final String clientSecret = "9dc99a3b71c42e607852f6557ec48f5c8820f910";
     private static final String redirectUri = "githubapi://callback";
@@ -53,7 +53,9 @@ public class MainPresenterImpl extends BasePresenter<MyRecyclerView> implements 
                 int statusCode = response.code();
                 if (statusCode == 200) {
                     repositories = response.body();
-                    getView().populateRecyclerView(repositories);
+                    if (getView() != null) {
+                        getView().populateRecyclerView(repositories);
+                    }
                 }
             }
 
@@ -77,9 +79,7 @@ public class MainPresenterImpl extends BasePresenter<MyRecyclerView> implements 
             public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
                 int statusCode = response.code();
                 if (statusCode == 200) {
-                    if (code != null) {
-                        code.toString();
-                    }
+                    response.toString();
                 }
             }
 
